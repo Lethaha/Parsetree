@@ -1,1 +1,24 @@
-Lethaha thamae
+Author: Lethaha thamae
+Date:  	4/22/2014
+Description: Parse tree data structure construction
+
+
+Introduction:
+
+A parse tree is an n-arry tree (a tree where each internal node may have an arbitrary number of
+children). We will call the leaf nodes terminal nodes and the internal nodes non-terminal nodes. 
+Only the terminal nodes will have an associated value (for example x3, =, +, y and 3 are all the terminal nodes in gure 1).
+Although the underlying datastructure is quite a heavyweight data structure, its contents will only
+be accessed and modied through a lightweight class called an iterator. This iterator will provide
+similar functionality to that of the standard C++ containers, for example the
+std::vector.
+
+
+Intruction:
+1) To compile the project type make in the termin;
+2) To run the program type 'make run'
+3) This should run the unit test as requested and the output should read that all tests past
+
+
+Files:
+tree_node.cpp, tree_iterator.cpp, parsetree.cpp, counter.h, catch.hpp, tree_node.h, tree_iterator.h, parsetree.h

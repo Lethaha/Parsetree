@@ -1,8 +1,8 @@
 /*
  * parsetree.cpp
  *
- *  Created on: Apr 11, 2014
- *      Author: Lethaha
+ * Created on: Apr 11, 2014
+ * Author: Lethaha
  */
 
 #include "tree_node.h"
@@ -13,7 +13,7 @@
 #define CATCH_CONFIG_MAIN // So that Catch will define a main method
 #include "catch.hpp"     // Catch unit testing framework
 
-
+// Move contructor
 parsetree & parsetree :: operator = (const parsetree && rhs)
 	{
 		if(this!=&rhs)
@@ -23,7 +23,7 @@ parsetree & parsetree :: operator = (const parsetree && rhs)
 
 	return *this ;
 	}
-
+// copy constructor
 parsetree & parsetree ::operator = (const parsetree & rhs)
 	{
 		if(this!=&rhs)
@@ -50,22 +50,22 @@ parsetree::~parsetree() {
 		delete *i;
 }
 
-
+// default
 parsetree::parsetree()
 {
 root = nullptr ;
 } ;
-
+// copy constructor
 parsetree::	parsetree(const parsetree & rhs): root(rhs.root)
 {};
-
+// move constructor
 parsetree:: parsetree(const parsetree&& rhs): root(rhs.root)
 {};
 
 
 tree_iterator parsetree::end (void)
 {
-	return tree_iterator(nullptr) ;
+	return tree_iterator(nullptr) ; // end of parse tree marked by null pointer.
 }
 
 tree_iterator parsetree::begin(void)
@@ -90,7 +90,7 @@ void parsetree::clear(void)
 	// Delete the current node
 	delete *i;
 }
-
+// delete tree recursively
 void parsetree::erase (tree_iterator i )
 {
 	if(*i == nullptr)
@@ -100,7 +100,7 @@ void parsetree::erase (tree_iterator i )
 	delete *i ;
 
 }
-
+// insert node into tree
 tree_iterator parsetree::insert(tree_iterator parent, char val)
 {
 tree_node* node = new tree_node(val) ;
@@ -130,59 +130,3 @@ TEST_CASE("Parsetree","[pointers][binarytree]")
 }
 
 
-/*
-void unit_test_3() {
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  std::cout << "The unit test below illustrates the creation of a parse tree of depth 3" << std::endl;
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  tree_node* root = new tree_node('1');
-  root->add_child('2')->add_child('7')->add_child('8');
-  root->child(0)->add_child('3')->add_child('6');
-  root->child(0)->child(0)->add_child('4')->add_child('5');
-  tree_iterator begin(root);
-  tree_iterator end(0);
-  for (tree_iterator it = begin; it != end; ++it) {
-    std::cout << (*it)->get_value()<<" ";
-  }
-  std::cout << std::endl;
-  std::cout << "unit test has been successfully completed" << std::endl;
-  std::cout << std::endl;
-}
-void unit_test_2() {
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  std::cout << "The unit test below illustrates the creation of a parse tree of depth 2" << std::endl;
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  tree_node* root = new tree_node('1');
-  root->add_child('2')->add_child('5')->add_child('6');
-  root->child(0)->add_child('3')->add_child('4');
-  tree_iterator begin(root);
-  tree_iterator end(0);
-  for (tree_iterator it = begin; it != end; ++it) {
-    std::cout << (*it)->get_value()<<" ";
-  }
-  std::cout << std::endl;
-  std::cout << "unit test has been successfully completed" << std::endl;
-  std::cout << std::endl;
-}
-void unit_test_1() {
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  std::cout << "The unit test below illustrates the creation of a parse tree of depth 1" << std::endl;
-  std::cout << "-----------------------------------------------------------------------" << std::endl;
-  tree_node* root = new tree_node('1');
-  tree_iterator begin(root);
-  tree_iterator end(0);
-  for (tree_iterator it = begin; it != end; ++it) {
-    std::cout << (*it)->get_value()<<" ";
-  }
-  std::cout << std::endl;
-  std::cout << "unit test has been successfully completed" << std::endl;
-  std::cout << std::endl;
-}
-
-int main(int argc, char** argv) {
-	unit_test_1() ;
-    unit_test_2() ;
-	unit_test_3();
-  return 0;
-}
-*/

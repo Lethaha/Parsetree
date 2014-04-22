@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-c -std=c++11
 LIBS=-lboost_program_options
-SOURCES=Prac2.cpp parsetree.cpp tree_iterator.cpp tree_node.cpp
+SOURCES=parsetree.cpp tree_iterator.cpp tree_node.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=mage.exe
+EXECUTABLE=tut7.exe
 
 all: $(SOURCES) $(EXECUTABLE)
 	
