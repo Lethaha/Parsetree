@@ -15,10 +15,16 @@ std::vector.
 
 
 Intruction:
+
 1) To compile the project type make in the termin;
 2) To run the program type 'make run'
 3) This should run the unit test as requested and the output should read that all tests past
 
+GIT REPOsITORY:
+https://github.com/Lethaha/Parsetree.git
+
+
 
 Files:
 tree_node.cpp, tree_iterator.cpp, parsetree.cpp, counter.h, catch.hpp, tree_node.h, tree_iterator.h, parsetree.h
+
