@@ -10,7 +10,8 @@
 #include"parsetree.h"
 #include <iostream> // I/O streams Header
 #include "tree_node.h"
-
+#define CATCH_CONFIG_MAIN // So that Catch will define a main method
+#include "catch.hpp"     // Catch unit testing framework
 
 
 parsetree & parsetree :: operator = (const parsetree && rhs)
@@ -108,7 +109,28 @@ if (root == nullptr)
  return tree_iterator(node);
 }
 
+TEST_CASE("Parsetree","[pointers][binarytree]")
+{
+	SECTION("To check for the creation of a root and contruction of a parse tree")
+		{
+	  INFO("To check for the creation of a root and contruction of a parse tree");
+	  tree_node* root = new tree_node('1');
+	  REQUIRE(tree_node::alive == 1);
+	  root->add_child('2')->add_child('7')->add_child('8');
+	  root->child(0)->add_child('3')->add_child('6');
+	  root->child(0)->child(0)->add_child('4')->add_child('5');
+	  tree_iterator begin(root);
+	  tree_iterator end(0);
+	  char count = '1' ;
+	  for (tree_iterator it = begin; it != end; ++it) {
+		int i = int((*it)->get_value()) ;
+	    REQUIRE(i==count);
+	    ++count;}
+	  }
+}
 
+
+/*
 void unit_test_3() {
   std::cout << "-----------------------------------------------------------------------" << std::endl;
   std::cout << "The unit test below illustrates the creation of a parse tree of depth 3" << std::endl;
@@ -163,4 +185,4 @@ int main(int argc, char** argv) {
 	unit_test_3();
   return 0;
 }
-
+*/

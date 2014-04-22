@@ -7,6 +7,8 @@
 
 #ifndef PARSETREE_H_
 #define PARSETREE_H_
+#define CATCH_CONFIG_MAIN // So that Catch will define a main method
+#include "catch.hpp"     // Catch unit testing framework
 
 class parsetree {
 public:
